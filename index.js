@@ -66,11 +66,9 @@ function openParseFile(stringifier) {
         initVal();
         //Get each columns value
         columns.forEach((col) => {
-          idx = line.indexOf(
-            " ",
-            line[value.length] == " " ? value.length + 1 : value.length
-          );
-          //define until which character it should cut the line
+          //get index of space from the last index
+          idx = line.indexOf(" ", line[value.length] == " " ? value.length + 1 : value.length);
+          //define until which character it should cut the line. either index of the space or max number of characters from the metadata
           if (idx < 0 || idx > value.length + Number(col.max))
             idx = value.length + Number(col.max);
           else idx += 1;
@@ -112,9 +110,10 @@ function getMetadata() {
     });
     //Set header name in scv
     const stringifier = stringify({ header: true, columns: headerName });
-    openParseFile(stringifier);
+    return stringifier
   } catch (err) {
     console.error(err);
+    return null
   }
 }
 
@@ -124,4 +123,7 @@ if (process.argv.length < 4) {
   process.exit(1);
 }
 
-getMetadata();
+const stringifier = getMetadata();
+if (stringifier) {
+  openParseFile(stringifier);  
+}
