@@ -98,7 +98,7 @@ function getMetadata() {
         console.log("Error: the metada file form is incorrect, example: name, length, type");
         process.exit(1);
       }
-      else if (array[2] != 'date' && array[2] != 'numérique' && array[2] != 'chaîne' )
+      else if (array[2].trim() != 'date' && array[2].trim() != 'numérique' && array[2].trim() != 'chaîne' )
       {
         console.log("Error: the type of metadata is incorrect should, the differrents type are : date, numérique and chaîne");
         process.exit(1);
