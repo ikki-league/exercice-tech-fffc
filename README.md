@@ -11,7 +11,7 @@ node index.js testA/classique.txt testA/metada.txt
 The file structure is described in a metadata file in csv format with a line for each column defining:
 
 the name of the column, the length of the column, the column type.
-Example:
+### Example:
 ```
 birthay, 10, date
 name, 15, chaîne
@@ -19,7 +19,7 @@ name, 15, chaîne
 
 ## The file to parse
 
-Example:
+### Example:
 ```
 1996-04-25Zita
 2000-02-13 Marion
